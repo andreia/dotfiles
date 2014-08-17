@@ -1,0 +1,80 @@
+[alias]
+    # Adding
+    a = add
+    aa = add -a .
+
+    # Amend currently staged files to the latest commit
+    amend = commit --amend --reuse-message=HEAD
+
+    # Delete local branch: git branch -d <branch-name>
+    bd = branch -d
+
+    # Rename branch: git branch -m <new-branch-name>
+    br = branch -m
+
+    # Show all branches
+    ba = branch -a
+
+    # Create a branch and switch to it: git checkout -b <branch-name>
+    cob = checkout -b
+
+    # Checkout alias
+    co = checkout
+
+    # Show contributors with the number of commits
+    contributors = shortlog --summary --numbered
+
+    # Delete branches that have already been merged with master
+    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+    # Fetching
+    f = fetch
+    fo = fetch origin
+
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
+
+    # Log
+    l = log --pretty=oneline -n 10 --graph --abbrev-commit
+
+    # Unstage
+    u = reset HEAD --
+
+    # Undo changes in the file: git checkout -- <file>
+    ucf = checkout --
+
+    # Undo last commit
+    ulc = reset --soft HEAD^
+
+[user]
+    # name = user name
+    # email = user email
+
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    pager = true
+    status = auto
+    ui = auto
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
+[core]
+    # on Windows - to convert LF endings into CRLF when you check out code: autocrlf = true
+    autocrlf = input
+    pager = less -FRSX
+
+    # on OS X - make `git rebase` safer
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
