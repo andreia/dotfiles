@@ -49,6 +49,9 @@
     # Undo last commit
     ulc = reset --soft HEAD^
 
+    # Word diff. See https://plus.google.com/+IlyaGrigorik/posts/iBVkMv1kraD
+    wdiff = diff --color-words
+
 [user]
     # name = user name
     # email = user email
